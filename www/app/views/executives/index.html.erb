@@ -1,0 +1,49 @@
+<h1><%= Date.today().strftime('%Y') %> Club Executives</h1>
+
+<ul id="executives-index" class="executives">
+	<% @executives.each do |executive| %>
+		<li class="executive">
+			<section class="executive">	
+				<%= image_tag executive.photo.url(:med) -%>
+				<h1><%= executive.name %></h1>
+				<h2 class="position"><%= executive.position %></h2>
+				<% if executive.contact -%>
+					<p class="contact"><%= mail_to executive.contact %></p>
+				<% end -%>
+				<p class="about"><%= markdown executive.about %></p>
+				<% admin_div do -%>
+					<%= link_to 'Show', executive %>
+					<%= link_to 'Edit', edit_executive_path(executive) %>
+					<%= link_to 'Destroy', executive, :confirm => 'Are you sure?', :method => :delete %>
+				<% end -%>
+			</section>
+		</li>
+	<% end -%>
+</ul>
+<!--
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Is active</th>
+    <th>Contact</th>
+    <th>About</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @executives.each do |executive| %>
+  <tr>
+    <td><%= executive.name %></td>
+    <td><%= executive.is_active %></td>
+    <td><%= executive.contact %></td>
+    <td><%= executive.about %></td>
+  </tr>
+<% end %>
+</table>
+-->
+<br />
+
+<nav>
+	<%= link_to 'New Executive', new_executive_path %>
+<nav>

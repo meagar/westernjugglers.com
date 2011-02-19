@@ -1,0 +1,49 @@
+<%= form_for @executive, :html => { :multipart => true } do |f| %>
+  <% if @executive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@executive.errors.count, "error") %> prohibited this executive from being saved:</h2>
+
+      <ul>
+      <% @executive.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+	<p>
+		<%= f.label :position%>
+		<%= f.text_field :position %>
+	</p>
+
+	<p>
+    <%= f.label :is_active %>
+    <%= f.check_box :is_active %>
+	</p>
+
+  <p>
+    <%= f.label :contact %>
+    <%= f.text_field :contact %>
+	</p>
+
+  <p>
+    <%= f.label :about %>
+    <%= f.text_area :about %>
+	</p>
+
+	<p>
+		<%= f.label :photo %>
+		<%= f.file_field :photo -%>
+	</p>
+
+  <p class="actions">
+    <%= f.submit %>
+	</p>
+
+
+<% end %>
