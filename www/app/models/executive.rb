@@ -7,4 +7,8 @@ class Executive < ActiveRecord::Base
 		:thumb => '128x', :med => '250x200'
 	}
 
+	def self.current
+		where('active_year = (select MAX(active_year) from executives)')
+	end
+
 end

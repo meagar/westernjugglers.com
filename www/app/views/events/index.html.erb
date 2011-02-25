@@ -1,5 +1,16 @@
 <h1>Events</h1>
-
+<!--
+<table border="1">
+	<%@calendar.meetings.each do |m|%>
+		<tr>
+			<td><%= m.name %></td>
+			<td><%= m.starts_at%></td>
+			<td><%= m.ends_at > Time.now%></td>
+			<td><%= m.location %></td>
+		</tr>
+	<% end %>
+</table>
+-->
 <p>
 Juggling festivals are a great place to be inspired and astounded by truly
 great juggling. There are usually one or more vendors of juggling equipment
@@ -15,23 +26,18 @@ Some upcoming events and festivals within driving distance of London:
 <% @events.each do |event| %>
 	<li class="event">
 		<section class="event">
-			<h1><%= link_to event.name, event %></h1>
+		<h1><%= event.homepage ? link_to(event.name, event.homepage) : event.name %></h1>
 			<aside class="when-and-where">
 				<span class="start"><%= event.starts_at.strftime '%A %B %e' %></span> -
-				<span class="end"><%= event.ends_at.strftime '%A %B %e %Y' %></span>,
-				<span class="where"><%= event.location %></span>
+				<span class="end"><%= event.ends_at.strftime '%A %B %e %Y' 
+					%></span><% unless event.location.nil? -%>, <span class="where"><%= event.location %></span>
+				<% end %>
 			</aside>
 
-			<a href="<%= event.homepage %>" class="homepage external" target="_blank">Homepage</a>
 			<section class="desc">
 				<%= markdown event.description %>
 			</section>
 
-			<% admin_div do %>
-				<%= link_to 'Show', event %>
-				<%= link_to 'Edit', edit_event_path(event) %>
-				<%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>
-			<% end %>	
 		</section>
 	</li>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219202455) do
+ActiveRecord::Schema.define(:version => 20110220165033) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(:version => 20110219202455) do
   create_table "executives", :force => true do |t|
     t.string   "name"
     t.string   "position"
-    t.boolean  "is_active"
     t.string   "contact"
     t.string   "about",              :limit => 500
+    t.integer  "active_year"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(:version => 20110219202455) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "record_holders", :force => true do |t|
+    t.string   "name"
+    t.integer  "score",      :default => 0
+    t.datetime "time"
+    t.integer  "record_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "records", :force => true do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.string   "description"
+    t.integer  "number_of_props"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

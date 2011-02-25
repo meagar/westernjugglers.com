@@ -1,7 +1,7 @@
 class ExecutivesController < ApplicationController
 
 	def index
-    @executives = Executive.where('is_active' => true)
+    @executives = Executive.current
   end
  
 	def show

@@ -4,15 +4,39 @@ body {
 	font-family:arial sans-serif;
 }
 
+ul {
+	padding-left:20px;
+}
+
+strong {
+	font-weight:bold;
+}
+
 #wrapper {
 	width:960px;
 	margin:0 auto;
-	background:#fff;
+	background:url(gfx/content-background.png) #f00;
 }
 
 #content nav {
 	clear:both;
 	padding:20px 0;
+}
+
+footer {
+	height:100px;
+	text-align:center;
+	background-color:#eee;
+	margin-top:50px;
+	clear:both;
+}
+
+footer p {
+	padding-top:20px;
+}
+
+header {
+	margin-bottom:20px;
 }
 
 h1#header {
@@ -22,6 +46,23 @@ h1#header {
 	margin:0;
 	background:url(gfx/header.jpg);
 	text-indent:-100em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:bold;
+	font-size:110%;
+	margin-bottom:10px;
+	margin-top:40px;
+	color:#61116B;
+}
+
+b {
+	font-weight:bold;
+}
+
+#content p {
+	line-height:1.6;
+	margin-bottom:1.5em;
 }
 
 div#up-coming {
@@ -85,17 +126,13 @@ nav#main a:hover {
 #content {
 	position:relative;
 	clear:both;	
-	padding:50px;
+	padding:0 50px;
+	margin-top:20px;
 }
 
 #content h1 {
 	font-weight:bold;
 	font-size:140%;
-	margin-bottom:1em;
-}
-
-#content p {
-	line-height:1.5;
 	margin-bottom:1em;
 }
 
@@ -106,7 +143,7 @@ ul.events {
 
 li.event {
 	position:relative;
-	padding:30px 20px;
+	padding:0 20px;
 }
 
 li.event a.homepage {
@@ -136,6 +173,7 @@ li.event a.homepage {
 
 blockquote {
 	position:relative;
+	font-size:smaller;
 	font-style:italic;
 	padding:10px 30px;
 	background:url(gfx/blockquote-open.png) 5px 5px no-repeat #eee;
@@ -198,5 +236,95 @@ section.executive {
 
 .executive h2 {
 	font-weight:bold;
+}
+
+ul.locations li {
+	margin-top:40px;
+}
+
+ul.records li,
+ul.record-holders li {
+	position:relative;
+}
+
+.records span.name {
+	font-weight:bold;
+}
+
+p.record-holder-score input {
+	width:3em;
+}
+
+
+table.meetings {
+	border-collapse:collapse;
+}
+
+table.meetings td {
+	border:1px solid #ddd;
+	padding:3px 5px;
+}
+
+.event p {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.event ul {
+	margin-left:10px;
+}
+
+.event li {
+	list-style-type:disc;
+}
+
+aside#meetings {
+	float:right;
+	margin:0 0 30px 30px;
+	width:210px;
+	background:#fff;
+	padding:20px;
+	-moz-box-shadow: 1px 1px 2px #bbb;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+}
+
+aside#meetings h1 {
+	font-size:110%;
+	font-weight:bold;
+	text-align:center;
+	margin:0;
+}
+
+aside#meetings h3 {
+	font-size:100%;
+	text-align:center;
+	margin:0 0 20px;
+}
+
+
+aside#meetings table {
+	width:100%;
+}
+
+aside#meetings tr.even td,
+aside#meetings tr.even th {
+	background:#eee;
+}
+
+aside#meetings td,
+aside#meetings th {
+	padding:2px 5px;
+	border:1px solid #ddd;
+	font-size:smaller;
+}
+
+aside#meetings td {
+	border-left:none;
+}
+aside#meetings th {
+	text-align:right;
+	font-weight:bold;
+	border-right:none;
 }
 

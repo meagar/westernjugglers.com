@@ -17,11 +17,11 @@
 
 		<div id="up-coming">
 			<p class="meeting">
-				Next Meeting: Monday, July 29th, in the UCC (<a href="#">See All</a>)	
+				Next Meeting: <%= @next_meeting.starts_at.strftime('%A %B %e') %> in <%= @next_meeting.location %>
 			</p>
 
 			<p class="event">
-				Next Event: <a href="#">RIT Spring Juggle-in</a>
+			Next Event: <a href="/events"><%= @next_event.name %></a>
 			</p>
 			<div style="clear:both"></div>	
 		</div>
@@ -39,6 +39,11 @@
 			<%= yield %>
 		</section>
 
+		<footer>
+
+		<p class="copy">&copy; <%= Date.today.year %> Western Juggling Club</p>
+
+		</footer>
 	</div>
 </body>
 </html>

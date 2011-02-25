@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  record_id: 1
+  name: MyString
+  score: 1
+
+two:
+  record_id: 1
+  name: MyString
+  score: 1

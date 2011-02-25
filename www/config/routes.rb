@@ -1,11 +1,20 @@
 WesternjugglersCom::Application.routes.draw do
+
   root :to => "static#home"
 
-  resources :executives
+	match 'calendar' => 'static#calendar'
+	match 'meetings' => 'static#meetings'
+	match 'gallery' => 'static#todo'
+	match 'contact' => 'static#contact'
 
-  resources :meetings
+	match 'links' => 'static#links'
 
-  resources :events
+  resources :executives, :events
+
+  resources :records do
+		resources :holders,  :controller => 'record_holders'
+	end
+	
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -8,15 +8,15 @@ module ApplicationHelper
 
 	def top_nav
 		nav_links = [
-			[ 'Home',       '/' ],
-			[ 'Calendar',   '/calendar' ],
-			[ 'Meetings',   '/meetings' ],
-			[ 'Executives', '/executives' ],
-			[ 'Gallery',    '/gallery' ],
-			[ 'Events',     '/events' ],
-			[ 'Records',    '/records' ],
-			[ 'Contact',    '/contact' ],
-			[ 'Links',      '/links' ],
+			[ 'Home',      '/' ],
+			[ 'Calendar',  '/calendar' ],
+			[ 'Meetings',  '/meetings' ],
+			[ 'Executives','/executives' ],
+			[ 'Gallery',   '/gallery' ],
+			[ 'Events',    '/events' ],
+			[ 'Records',   '/records' ],
+			[ 'Contact',   '/contact' ],
+			[ 'Links',     '/links' ],
 		]	
 
 		html = ''
