@@ -189,7 +189,7 @@ blockquote span.close-quote {
 	background:url(gfx/blockquote-close.png) center no-repeat;
 }
 
-div.admin-options {
+aside.admin-options {
 	border:2px solid #f00;
 	background:#fdd;
 	position:absolute;
@@ -198,7 +198,7 @@ div.admin-options {
 	opacity:0.1;
 }
 
-div.admin-options a {
+aside.admin-options a {
 	color:#f00;
 	font-weight:bold;
 	text-decoration:none;
@@ -207,12 +207,12 @@ div.admin-options a {
 
 }
 
-div.admin-options a:hover {
+aside.admin-options a:hover {
 	background:#f99;
 	text-decoration:underline;
 }
 
-div.admin-options:hover {
+aside.admin-options:hover {
 	opacity:1.0;
 }
 
@@ -220,7 +220,8 @@ div.admin-options:hover {
 section.executive {
 	position:relative;
 	clear:both;
-	padding:60px 20px;
+	margin-top:60px;
+	padding:0 20px;
 }
 
 .executive img {
@@ -230,6 +231,8 @@ section.executive {
 .executive p, 
 .executive h1,
 .executive h2 {
+	margin-top:0;
+	margin-bottom:20px;
 	margin-left:250px;
 	padding-left:20px;
 }

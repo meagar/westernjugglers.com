@@ -20,29 +20,7 @@
 		</li>
 	<% end -%>
 </ul>
-<!--
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Is active</th>
-    <th>Contact</th>
-    <th>About</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @executives.each do |executive| %>
-  <tr>
-    <td><%= executive.name %></td>
-    <td><%= executive.contact %></td>
-    <td><%= executive.about %></td>
-  </tr>
-<% end %>
-</table>
--->
-<br />
-
-<nav>
+<% admin_div do %>
 	<%= link_to 'New Executive', new_executive_path %>
-<nav>
+<% end %>

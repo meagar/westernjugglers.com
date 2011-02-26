@@ -2,12 +2,17 @@ WesternjugglersCom::Application.routes.draw do
 
   root :to => "static#home"
 
+	match 'login'    => 'user_sessions#new'
+	match 'logout'   => 'user_sessions#destroy'
+
+	resource :user_session
+
 	match 'calendar' => 'static#calendar'
 	match 'meetings' => 'static#meetings'
-	match 'gallery' => 'static#todo'
-	match 'contact' => 'static#contact'
+	match 'gallery'  => 'static#todo'
+	match 'contact'  => 'static#contact'
 
-	match 'links' => 'static#links'
+	match 'links'    => 'static#links'
 
   resources :executives, :events
 

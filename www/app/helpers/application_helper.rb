@@ -37,11 +37,11 @@ module ApplicationHelper
 
 
 	def admin_div (&block)
-		concat('<div class="admin-options">'.html_safe)
+		concat('<aside class="admin-options">'.html_safe)
 
 		yield
 
-		concat('</div>'.html_safe)
+		concat('</aside>'.html_safe)
 
 		return
 	end
