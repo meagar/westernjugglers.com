@@ -19,7 +19,7 @@
 			<h3><%= holder.name %></h3>
 			<%= holder_score holder -%>,
 			<%= holder.time.strftime('%B %e, %Y %l:%M%P') -%>
-			<% admin_div do -%>
+			<%= admin_div do -%>
 				<%= link_to 'Edit', edit_record_holder_path(@record, holder) %>
 			<% end %>
 		</li>
@@ -27,7 +27,7 @@
 	</ul>
 <% end -%>
 
-<% admin_div do -%>
+<%= admin_div do -%>
 	<%= link_to 'Edit', edit_record_path(@record) %>
 	<%= link_to 'New', new_record_holder_path(@record) %>
 <% end %>

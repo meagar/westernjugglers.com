@@ -9,7 +9,7 @@ module RecordsHelper
 			return "#{h} hours, #{m} minutes, #{s} seconds"
 		end
 
-		holder.score
+		"#{holder.score} #{holder.record.unit.downcase}"
 	end
 
 end

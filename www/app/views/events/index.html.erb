@@ -26,7 +26,7 @@ Some upcoming events and festivals within driving distance of London:
 <% @events.each do |event| %>
 	<li class="event">
 		<section class="event">
-		<h1><%= event.homepage ? link_to(event.name, event.homepage) : event.name %></h1>
+		<h1><%= event.homepage ? link_to(event.name, event.homepage, {:target => '_blank'}) : event.name %></h1>
 			<aside class="when-and-where">
 				<span class="start"><%= event.starts_at.strftime '%A %B %e' %></span> -
 				<span class="end"><%= event.ends_at.strftime '%A %B %e %Y' 
@@ -43,6 +43,6 @@ Some upcoming events and festivals within driving distance of London:
 <% end %>
 </ul>
 
-<% admin_div do %>
+<%= admin_div do %>
 	<%= link_to 'New Event', new_event_path %>
 <% end %>

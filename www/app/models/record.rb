@@ -6,7 +6,7 @@ class Record < ActiveRecord::Base
 	end
 
 	def past_holders
-		record_holders.last(record_holders.length - 1)
+		record_holders.length > 1 ? record_holders.last(record_holders.length - 1) : [] 
 	end
 
 end

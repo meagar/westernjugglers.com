@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
-	before_filter :fetch_calendar
+	before_filter :fetch_calendar, :store_location
+
 	def fetch_calendar
 		@calendar = GoogleCalendar.new
 		@next_meeting = @calendar.future_meetings.first
@@ -14,9 +15,8 @@ class ApplicationController < ActionController::Base
 
 	helper :all
   helper_method :current_user_session, :current_user
-  filter_parameter_logging :password, :password_confirmation
   
-  private
+ 	protected 
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -30,8 +30,7 @@ class ApplicationController < ActionController::Base
     def require_user
       unless current_user
         store_location
-        flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_user_session_url
+        redirect_to '/login', :notice => "You must be logged in to access this page"
         return false
       end
     end
@@ -39,17 +38,23 @@ class ApplicationController < ActionController::Base
     def require_no_user
       if current_user
         store_location
-        flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to '/', :notice => "You must be logged out to access this page"
         return false
       end
     end
     
     def store_location
-      session[:return_to] = request.request_uri
+			if request.method == 'GET' and !request.fullpath.match /^\/(reset-password|login|logout|user-session)/
+				logger.info("setting last uri to #{request.fullpath}")
+				session[:return_to] = request.fullpath
+			end
     end
-    
-    def redirect_back_or_default(default)
+   
+		def last_uri
+			session[:return_to] || '/'
+		end
+
+    def redirect_back_or_default (default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end

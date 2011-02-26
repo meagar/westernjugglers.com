@@ -11,16 +11,17 @@
 					<p class="contact"><%= mail_to executive.contact %></p>
 				<% end -%>
 				<p class="about"><%= markdown executive.about %></p>
-				<% admin_div do -%>
+				<%= admin_div do -%>
 					<%= link_to 'Show', executive %>
 					<%= link_to 'Edit', edit_executive_path(executive) %>
 					<%= link_to 'Destroy', executive, :confirm => 'Are you sure?', :method => :delete %>
 				<% end -%>
+				<div style="clear:both"></div>
 			</section>
 		</li>
 	<% end -%>
 </ul>
 
-<% admin_div do %>
+<%= admin_div do %>
 	<%= link_to 'New Executive', new_executive_path %>
 <% end %>

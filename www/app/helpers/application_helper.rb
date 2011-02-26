@@ -21,7 +21,6 @@ module ApplicationHelper
 
 		html = ''
 
-		logger.info(request.fullpath);
 		active = false;
 		nav_links.each do |i|
 			link_class = i[0].downcase;
@@ -37,13 +36,14 @@ module ApplicationHelper
 
 
 	def admin_div (&block)
-		concat('<aside class="admin-options">'.html_safe)
+		return unless current_user
+		
+		output = '<aside class="admin-options">'.html_safe
 
-		yield
+		output << capture(&block)
 
-		concat('</aside>'.html_safe)
+		output.safe_concat '</aside>'
 
-		return
 	end
 
 end

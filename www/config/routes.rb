@@ -2,10 +2,18 @@ WesternjugglersCom::Application.routes.draw do
 
   root :to => "static#home"
 
-	match 'login'    => 'user_sessions#new'
+	match 'login'    => 'user_sessions#new', :via => 'get'
+	match 'login'    => 'user_sessions#create', :via => 'post'
 	match 'logout'   => 'user_sessions#destroy'
 
-	resource :user_session
+	resource :user_session #do
+	#	get :login
+	#	post :login
+	#end
+
+	match 'reset-password', :to => 'users#edit', :via => 'get'
+	match 'reset-password', :to => 'users#update', :via => 'post'
+
 
 	match 'calendar' => 'static#calendar'
 	match 'meetings' => 'static#meetings'

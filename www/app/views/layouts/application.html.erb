@@ -30,6 +30,16 @@
 			<nav id="main">
 				<%= top_nav %>
 			</nav>
+
+			<div class="login">
+				<% if current_user -%>
+					<a href="/logout">Logout</a><span>|</span>
+					<a href="/reset-password">Reset Password</a>
+				<% else -%>
+					<a href="/login">Login</a>
+				<% end -%>
+			</div>
+			
 		</header>
 
 		<section id="content">

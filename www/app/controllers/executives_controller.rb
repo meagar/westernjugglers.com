@@ -16,7 +16,7 @@ class ExecutivesController < ApplicationController
     @executive = Executive.find(params[:id])
 
 		if @executive.update_attributes(params[:executive])
-			redirect_to(@executive, :notice => 'Executive was successfully updated.')
+			redirect_to @executive, :notice => 'Executive was successfully updated.'
 		else
 			render :action => "edit"
 		end
