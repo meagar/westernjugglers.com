@@ -3,11 +3,14 @@
 
 <% if @record.current_holder -%>
 	<h2>Current Record Holder</h2>
-	<ul><li>
+  <div class="current-holder" style="position:relative; padding-left:20px;">
 	<h3><%= @record.current_holder.name %></h3>
 	<%= holder_score @record.current_holder -%>,
-	<%= @record.current_holder.time.strftime('%B %e, %Y %l:%M%P') -%>
-	</li></ul>
+  <%= @record.current_holder.time.strftime('%B %e, %Y') -%>
+  <%= admin_div do -%>
+    <%= link_to 'Edit', edit_record_holder_path(@record, @record.current_holder) %>
+  <% end %>
+</div>
 <% end -%>
 
 <% if @record.past_holders.length -%>
@@ -18,7 +21,7 @@
 		<li>
 			<h3><%= holder.name %></h3>
 			<%= holder_score holder -%>,
-			<%= holder.time.strftime('%B %e, %Y %l:%M%P') -%>
+			<%= holder.time.strftime('%B %e, %Y') -%>
 			<%= admin_div do -%>
 				<%= link_to 'Edit', edit_record_holder_path(@record, holder) %>
 			<% end %>

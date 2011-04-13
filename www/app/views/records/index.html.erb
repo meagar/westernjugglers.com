@@ -18,29 +18,6 @@
 	<% end -%>
 </ul>
 
-<hr>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Unit</th>
-    <th>Number of props</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @records.each do |record| %>
-  <tr>
-    <td><%= record.name %></td>
-    <td><%= record.unit %></td>
-    <td><%= record.number_of_props %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
 <%= admin_div do %>
 	<%= link_to 'New Record', new_record_path %>
-	<% end %>
+<% end %>

@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
 	before_filter :fetch_calendar, :store_location
 
 	def fetch_calendar
-		@calendar = GoogleCalendar.new
+    @calendar = Rails.cache.read('calendar');
+    if (!@calendar)
+      @calendar = GoogleCalendar.new
+      Rails.cache.write('calendar', @calendar);
+    end
+
 		@next_meeting = @calendar.future_meetings.first
 		@next_event = @calendar.future_events.first
 	end

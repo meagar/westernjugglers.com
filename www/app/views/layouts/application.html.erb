@@ -18,12 +18,16 @@
 
 			<div id="up-coming">
 				<p class="meeting">
-					Next Meeting: <%= @next_meeting.starts_at.strftime('%A %B %e') %> in <%= @next_meeting.location %>
+					<% if @next_meeting %>
+						Next Meeting: <%= @next_meeting.starts_at.strftime('%A %B %e') %> in <%= @next_meeting.location %>
+					<% end %>
 				</p>
 
+				<% if @next_event %>
 				<p class="event">
 				Next Event: <a href="/events"><%= @next_event.name %></a>
 				</p>
+				<% end %>
 				<div style="clear:both"></div>	
 			</div>
 				

@@ -3,14 +3,15 @@
 	<h1>Upcoming Meetings</h1>
 	<h3>7pm - 9pm</h3>
 	<table id="meetings">
-
-		<% @calendar.future_meetings.each do |meeting| %>
-			<tr class="<%= cycle 'odd', 'even' %>">
-				<th><%= meeting.name %></th>
-				<td><%= meeting.starts_at.strftime('%a %b %e %Y') %></td>
-			</tr>
-		<% end %>
-
+  
+    <% if @calendar %>
+      <% @calendar.future_meetings.each do |meeting| %>
+        <tr class="<%= cycle 'odd', 'even' %>">
+          <th><%= meeting.name %></th>
+          <td><%= meeting.starts_at.strftime('%a %b %e %Y') %></td>
+        </tr>
+      <% end %>
+    <% end %>
 	</table>
 
 </aside>

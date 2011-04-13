@@ -37,14 +37,6 @@ ActiveRecord::Schema.define(:version => 20110226032825) do
     t.datetime "updated_at"
   end
 
-  create_table "meetings", :force => true do |t|
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "record_holders", :force => true do |t|
     t.string   "name"
     t.integer  "score",      :default => 0
