@@ -31,9 +31,11 @@ hr { clear:both; }
 }
 
 footer {
+	background:url(gfx/footer_tile.gif) top left repeat-x;
+	padding-top:20px;
+	color:#fff;
 	height:100px;
 	text-align:center;
-	background-color:#eee;
 	margin-top:60px;
 	clear:both;
 }
@@ -43,7 +45,7 @@ footer p {
 }
 
 footer a {
-	color:#000;
+	color:#fff;
 }
 
 header {
