@@ -1,0 +1,25 @@
+%h1 Events
+%p
+	Juggling festivals are a great place to be inspired and astounded by truly
+	great juggling. There are usually one or more vendors of juggling equipment
+	present, and crash-space can usually be arranged for multi-day festivals.
+	Events are usually added to our Google Calendar.
+
+%p
+	Some upcoming events and festivals within driving distance of London:
+
+%ul#events-index.events
+	- @events.each do |event|
+		%li.event
+			%section.event
+				%h1= event.homepage ? link_to(event.name, event.homepage, {:target => '_blank'}) : event.name
+				%aside.when-and-where
+					%span.start>= event.starts_at.strftime '%A %B %e'
+					=' - '
+					%span.end>= event.ends_at.strftime '%A %B %e %Y'
+					- if !event.location.nil?
+						,
+						%span.where= event.location
+
+			%section.desc= markdown event.description
+
