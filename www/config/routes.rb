@@ -17,20 +17,25 @@ WesternjugglersCom::Application.routes.draw do
 	match 'reset-password', :to => 'users#update', :via => 'post'
 
 
-	get 'calendar' => 'static#calendar'
-	get 'meetings' => 'static#meetings'
-	get 'gallery'  => 'static#todo'
-	get 'contact'  => 'static#contact'
-	get 'links'    => 'static#links'
-  get 'events'   => 'events#index'
-  get 'events/history' => 'events#history'
+  controller :static do
+    get 'calendar'
+    get 'meetings'
+    get 'gallery', :action => 'todo'
+    get 'contact'
+    get 'links'
+  end
+
+  controller :events do
+    get 'events', :action => :index
+    get 'events/history'
+  end
 
   resources :executives
 
   resources :records do
 		resources :holders,  :controller => 'record_holders'
 	end
-	
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
