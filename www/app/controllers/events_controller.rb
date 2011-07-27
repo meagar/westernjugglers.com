@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
 	def history
 		@events = @calendar ? @calendar.all_events : []
+    render 'index'
 	end
 
 end

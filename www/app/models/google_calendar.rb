@@ -71,6 +71,10 @@ class GoogleCalendar
 		end.reverse
 	end
 
+  def all_events
+    @events
+  end
+
 	def meetings
 		@meetings
 	end

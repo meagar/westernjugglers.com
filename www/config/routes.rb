@@ -15,14 +15,15 @@ WesternjugglersCom::Application.routes.draw do
 	match 'reset-password', :to => 'users#update', :via => 'post'
 
 
-	match 'calendar' => 'static#calendar'
-	match 'meetings' => 'static#meetings'
-	match 'gallery'  => 'static#todo'
-	match 'contact'  => 'static#contact'
+	get 'calendar' => 'static#calendar'
+	get 'meetings' => 'static#meetings'
+	get 'gallery'  => 'static#todo'
+	get 'contact'  => 'static#contact'
+	get 'links'    => 'static#links'
+  get 'events'   => 'events#index'
+  get 'events/history' => 'events#history'
 
-	match 'links'    => 'static#links'
-
-  resources :executives, :events
+  resources :executives
 
   resources :records do
 		resources :holders,  :controller => 'record_holders'
