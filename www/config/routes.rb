@@ -1,5 +1,7 @@
 WesternjugglersCom::Application.routes.draw do
 
+  get 'home', :to => redirect('/')
+
   root :to => "static#home"
 
 	match 'login'    => 'user_sessions#new', :via => 'get'
