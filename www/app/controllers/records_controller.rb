@@ -1,4 +1,7 @@
 class RecordsController < ApplicationController
+
+  before_filter :find_record, :only => %w(show edit update destroy)
+
   # GET /records
   # GET /records.xml
   def index
@@ -13,8 +16,6 @@ class RecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.xml
   def show
-    @record = Record.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @record }
@@ -34,7 +35,6 @@ class RecordsController < ApplicationController
 
   # GET /records/1/edit
   def edit
-    @record = Record.find(params[:id])
   end
 
   # POST /records
@@ -56,8 +56,6 @@ class RecordsController < ApplicationController
   # PUT /records/1
   # PUT /records/1.xml
   def update
-    @record = Record.find(params[:id])
-
 		if @record.update_attributes(params[:record])
 			redirect_to @record, :notice => 'Record was successfully updated.'
 		else
@@ -68,9 +66,15 @@ class RecordsController < ApplicationController
   # DELETE /records/1
   # DELETE /records/1.xml
   def destroy
-    @record = Record.find(params[:id])
     @record.destroy
 
 		redirect_to records_url
   end
+
+  protected
+
+  def find_record
+    @record = Record.find(params[:id])
+  end
+
 end
