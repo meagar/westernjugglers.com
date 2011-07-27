@@ -1,0 +1,28 @@
+%h1= @record.name
+
+- if @record.current_holder
+  %h2 Current Record Holder
+  .current-holder{ :style => "position:relative; padding-left:20px;" }
+  %h3= @record.current_holder.name
+  = #{holder_score @record.current_holder},
+  = @record.current_holder.time.strftime('%B %e, %Y')
+  = admin_div do
+    = link_to 'Edit', edit_record_holder_path(@record, @record.current_holder)
+
+- if @record.past_holders.length
+  %h2 Past Record Holders
+
+  %ul.record-holders
+    - @record.past_holders.each do |holder|
+      %li
+        %h3= holder.name
+        = #{holder_score holder}, 
+        = holder.time.strftime('%B %e, %Y')
+        = admin_div do
+          = link_to 'Edit', edit_record_holder_path(@record, holder)
+
+= admin_div do
+  = link_to 'Edit', edit_record_path(@record)
+  = link_to 'New Holder', new_record_holder_path(@record)
+
+= link_to 'Back', records_path
