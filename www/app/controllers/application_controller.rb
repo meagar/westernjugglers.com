@@ -1,15 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
 	before_filter :fetch_calendar, :store_location
 
 	def fetch_calendar
-    @calendar = Rails.cache.read('calendar');
-    if (!@calendar)
+    #@calendar = Rails.cache.read('calendar');
+    #if (!@calendar)
       @calendar = GoogleCalendar.new
-      Rails.cache.write('calendar', @calendar);
-    end
+    #  Rails.cache.write('calendar', @calendar);
+    #end
 
 		@next_meeting = @calendar.future_meetings.first
 		@next_event = @calendar.future_events.first
@@ -20,18 +19,18 @@ class ApplicationController < ActionController::Base
 
 	helper :all
   helper_method :current_user_session, :current_user
-  
- 	protected 
+
+ 	protected
     def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
+      #return @current_user_session if defined?(@current_user_session)
+      @current_user_session ||= UserSession.find
     end
-    
+
     def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.record
+      #return @current_user if defined?(@current_user)
+      @current_user ||= current_user_session && current_user_session.record
     end
-    
+
     def require_user
       unless current_user
         store_location
@@ -47,14 +46,14 @@ class ApplicationController < ActionController::Base
         return false
       end
     end
-    
+
     def store_location
 			if request.method == 'GET' and !request.fullpath.match /^\/(reset-password|login|logout|user-session)/
 				logger.info("setting last uri to #{request.fullpath}")
 				session[:return_to] = request.fullpath
 			end
     end
-   
+
 		def last_uri
 			session[:return_to] || '/'
 		end

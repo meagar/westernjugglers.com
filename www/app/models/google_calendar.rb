@@ -1,9 +1,10 @@
 
 class GoogleCalendar
 
-	class Item 
+	class Item
 		def initialize(event)
-			@starts_at, @ends_at = event.dtstart.to_time - 5.hours, event.dtend.to_time - 5.hours
+			#@starts_at, @ends_at = event.dtstart.to_time - 5.hours, event.dtend.to_time - 5.hours
+			@starts_at, @ends_at = event.dtstart.to_time - 4.hours, event.dtend.to_time - 4.hours
 			@duration = (@ends_at - @starts_at) / 3600
 
 			@location = event.location != "" ? event.location : nil
@@ -16,21 +17,21 @@ class GoogleCalendar
 
 			if @type == :meeting
 				if @name.match /^ucc( atrium)?/i
-					@location = "the UCC"
+					@location = "the UCC Atrium"
+          @name = "UCC Atrium"
 				elsif @name.match /^alumni hall/i
-					@location = "Alumni Hall"
+					@location = @name = "Alumni Hall"
 				end
 			end
 
-			if event.description 
+			if event.description
 				parts = event.description.to_a
 				@homepage = parts.shift if parts.length > 1 and parts[0].match /^http:\/\//
 				@description = parts.join
 			end
-
 		end
 
-		attr_reader :name, :description, :location, :starts_at, :ends_at, :duration, :homepage, :type 
+		attr_reader :name, :description, :location, :starts_at, :ends_at, :duration, :homepage, :type
 	end
 
 	def initialize
@@ -41,7 +42,7 @@ class GoogleCalendar
 		data = Net::HTTP.get URI.parse(url)
 
 		cals = Icalendar.parse(data);
-		
+
 		@meetings = []
 		@events = []
 
@@ -66,7 +67,7 @@ class GoogleCalendar
 	end
 
 	def future_events
-		@events.reject do |event|
+		@future_events ||= @events.reject do |event|
 			event.ends_at < Time.now
 		end.reverse
 	end
@@ -75,13 +76,13 @@ class GoogleCalendar
     @events
   end
 
-	def meetings
+	def all_meetings
 		@meetings
 	end
 
 	def future_meetings
-		@meetings.reject do |meeting|
-			meeting.ends_at < Time.now
+		@future_meetings ||= @meetings.reject do |meeting|
+			meeting.ends_at < (Time.now - 4.hours)
 		end.reverse
 	end
 

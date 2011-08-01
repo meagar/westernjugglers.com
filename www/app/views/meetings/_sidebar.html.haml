@@ -1,0 +1,9 @@
+%aside#meetings
+  %h1 Upcoming Meetings
+  %table#meetings
+    - if @calendar
+      - @calendar.future_meetings.each do |meeting|
+        %tr{:class => cycle('odd', 'even')}
+          %th= meeting.name
+          %td= meeting.starts_at.strftime('%a %b %e %Y')
+          %td #{meeting.starts_at.strftime('%l%P') }&nbsp;-&nbsp;#{meeting.ends_at.strftime('%l%P')}
