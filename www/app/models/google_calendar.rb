@@ -3,8 +3,11 @@ class GoogleCalendar
 
 	class Item
 		def initialize(event)
-			#@starts_at, @ends_at = event.dtstart.to_time - 5.hours, event.dtend.to_time - 5.hours
 			@starts_at, @ends_at = event.dtstart.to_time - 4.hours, event.dtend.to_time - 4.hours
+
+      @starts_at -= 1.hours if @starts_at.dst?
+      @ends_at -= 1.hours if @ends_at.dst?
+
 			@duration = (@ends_at - @starts_at) / 3600
 
 			@location = event.location != "" ? event.location : nil

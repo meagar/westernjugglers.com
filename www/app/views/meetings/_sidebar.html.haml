@@ -6,5 +6,5 @@
         %tr{:class => cycle('odd', 'even')}
           %th= meeting.name
           %td= meeting.starts_at.strftime('%a %b %e')
-          /%td #{meeting.starts_at.strftime('%l%P') }&nbsp;-&nbsp;#{meeting.ends_at.strftime('%l%P')}
-          %td 6pm - 8pm
+          %td #{meeting.starts_at.strftime('%l%P') }&nbsp;-&nbsp;#{meeting.ends_at.strftime('%l%P')}
+          /%td 6pm - 8pm

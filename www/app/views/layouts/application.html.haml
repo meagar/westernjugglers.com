@@ -1,0 +1,46 @@
+!!! html
+%html
+  %head
+    %title UWO Juggling Club
+
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+
+    = javascript_include_tag :defaults
+
+    = csrf_meta_tag
+
+  %body
+
+    #wrapper
+      %header
+        %h1#header UWO Juggling Club
+
+        #up-coming
+          %p.meeting
+            - if @next_meeting
+              Next Meeting: #{@next_meeting.starts_at.strftime('%A %B %e')} in #{@next_meeting.location}
+
+          - if @next_event
+            %p.event Next Event: <a href="/events">#{ @next_event.name }</a>
+          .clear
+
+        %nav#main= top_nav
+
+        .login
+          - if current_user
+            <a href="/logout">Logout</a><span>|</span>
+            <a href="/reset-password">Reset Password</a>
+          - else
+            <a href="/login">Login</a>
+
+      %section#content
+        - if notice
+          %p#notice= notice
+        = yield
+
+      %footer
+        %p.copy &copy; #{Date.today.year} Western Juggling Club
+        %p.author Design by <a href="http://meagar.net">Matthew Eagar</a>
