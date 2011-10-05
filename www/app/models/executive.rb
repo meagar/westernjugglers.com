@@ -11,4 +11,8 @@ class Executive < ActiveRecord::Base
 		where('active_year = (select MAX(active_year) from executives)')
 	end
 
+  def active?
+    true
+  end
+
 end
