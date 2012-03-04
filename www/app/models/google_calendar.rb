@@ -3,7 +3,7 @@ class GoogleCalendar
 
 	class Item
 		def initialize(event)
-			@starts_at, @ends_at = event.dtstart.to_time - 4.hours, event.dtend.to_time - 4.hours
+			@starts_at, @ends_at = event.dtstart.to_time - 5.hours, event.dtend.to_time - 5.hours
 
       @starts_at -= 1.hours if @starts_at.dst?
       @ends_at -= 1.hours if @ends_at.dst?
@@ -59,7 +59,7 @@ class GoogleCalendar
 
 		[@events,@meetings].each do |m|
 			m.sort! do |a,b|
-				return 0 if a.starts_at == b.starts_at
+				next 0 if a.starts_at == b.starts_at
 				a.starts_at < b.starts_at ? 1 : -1
 			end
 		end
